@@ -1,0 +1,17 @@
+version: '2'
+
+services: 
+    dbixclass:
+        image: dbixclass
+        build: .
+
+    mysql:
+        image: "mysql:5.6"
+        container_name: mysql
+        environment:
+            MYSQL_DATABASE: websurvey
+            MYSQL_USER: websurvey
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+        ports: 
+            - 3306:3306     

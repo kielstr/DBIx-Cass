@@ -1,0 +1,23 @@
+version: '2'
+
+services: 
+    dbixclass:
+        image: dbixclass
+        build: .
+        depends_on:
+         - mysql
+        volumes:
+            - $PWD:/app
+
+    mysql:
+        image: "mysql:5.6"
+        container_name: mysql
+        environment:
+            MYSQL_DATABASE: dbitest
+            MYSQL_USER: kiel
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+        ports: 
+            - 3306:3306    
+        volumes:
+        - $PWD/sql:/docker-entrypoint-initdb.d 
